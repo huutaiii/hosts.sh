@@ -1,2 +1,2 @@
 s2.youtube.com
-s.youtube.com
+s.youtube.com # watch history

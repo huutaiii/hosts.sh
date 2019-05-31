@@ -13,5 +13,5 @@ cat `find parts -type f` user.hosts \
 	| cut -d'#' -f1 \
 	| awk '{$1=$1};1' \
 	| awk '!a[$0]++' \
-	| egrep -v "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+ $(printf '(%s)' $(printf %s "$(awk NF whitelist.txt)" | tr '\n' '|'))$" \
+	| egrep -v "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+ $(printf '(%s)' $(printf %s "$(awk NF whitelist.txt | cut -d'#' -f1 | awk '{$1=$1};1')" | tr '\n' '|'))$" \
 	>hosts
