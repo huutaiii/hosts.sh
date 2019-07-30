@@ -5,7 +5,8 @@ mkdir parts
 
 while read url; do
 	filename=`grep -oP '(?<=://).*' <<< "$url" | tr '/' '_'`
-	curl "$url" -o "parts/$filename"
+	curl "$url" -o "parts/$filename" ||
+		wget "$url" -O "parts/$filename"
 done <sources.txt
 
 cat `find parts -type f` user.hosts |
